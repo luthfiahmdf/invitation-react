@@ -49,8 +49,12 @@ function App() {
             {inv ? (
               <div className="dear mt-7 flex justify-center flex-col items-center">
                 <h1 className="italic text-white text-xl">Dear</h1>
-                <h1 className="text-2xl text-white">{name}</h1>
-                <h1 className="italic text-white text-xl">{loc}</h1>
+                <h1 className="text-2xl text-white">
+                  {name !== null ? { name } : "test"}
+                </h1>
+                <h1 className="italic text-white text-xl">
+                  {loc !== null ? { loc } : "test"}
+                </h1>
               </div>
             ) : (
               <>
