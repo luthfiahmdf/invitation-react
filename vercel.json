@@ -1,6 +1,6 @@
 {
   "rewrites": [
     { "source": "/:name/:loc", "destination": "/index.html" },
-    { "source": "/:name/:loc/*", "destination": "/index.html" }
+    { "source": "/:name/:loc/(.*)", "destination": "/index.html" }
   ]
 }
