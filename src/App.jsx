@@ -11,14 +11,14 @@ function App() {
   const [inv, setInv] = useState(false);
   const [show, setShow] = useState(false);
 
-  // useEffect(() => {
-  //   const audioElement = document.getElementById("music");
-  //   if (inv) {
-  //     audioElement.play();
-  //   } else {
-  //     audioElement.pause();
-  //   }
-  // }, [inv]);
+  useEffect(() => {
+    const audioElement = document.getElementById("music");
+    if (inv) {
+      audioElement.play();
+    } else {
+      audioElement.pause();
+    }
+  }, [inv]);
 
   const handleInv = () => {
     setInv(true);
@@ -75,7 +75,7 @@ function App() {
         </div>
       )}
 
-      {/* <audio id="music" src={m} /> */}
+      <audio id="music" src={m} />
       <div className={`${show ? "display-block" : "hidden"}`}>
         <Invite />
         <Groom />
