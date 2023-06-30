@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
-import "animate.css/animate.min.css";
+
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import "./index.css";
 
