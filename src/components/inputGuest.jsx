@@ -51,7 +51,7 @@ const InputGuest = () => {
   };
   useEffect(() => {
     fetchGuests();
-  }, [onFinish]);
+  }, []);
   return (
     <>
       <div className="slicer flex justify-center items-center mt-4 flex-col">
