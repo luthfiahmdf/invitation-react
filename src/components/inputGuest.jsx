@@ -1,4 +1,6 @@
 import { Modal, Form, Input, Select } from "antd";
+import Swal from "sweetalert2";
+import { BsFillCheckCircleFill } from "react-icons/bs";
 import axios from "axios";
 import { collection, addDoc } from "firebase/firestore";
 import { firestore } from "../config/firebaseConfig";
@@ -25,6 +27,9 @@ const InputGuest = () => {
     try {
       const docRef = await addDoc(collection(firestore, "guests"), values);
       console.log("Guest added to Firestore with ID:", docRef.id);
+      fetchGuests();
+      Swal.fire("Thanks🎉!", "Your message has been sent!", "success");
+      setIsModalOpen(false);
       // Lakukan tindakan lain setelah berhasil menambahkan tamu ke Firestore
     } catch (error) {
       console.error("Error adding guest to Firestore:", error);
@@ -37,7 +42,7 @@ const InputGuest = () => {
   const fetchGuests = async () => {
     try {
       const response = await axios.get(
-        "https://firestore.googleapis.com/v1/projects/wedding-b3256/databases/(default)/documents/guests"
+        "https://firestore.googleapis.com/v1/projects/wedding-3dba0/databases/(default)/documents/guests"
       );
       const guestList = response.data.documents.map((doc) => ({
         id: doc.name.split("/").pop(),
@@ -148,7 +153,24 @@ const InputGuest = () => {
               <div className="mess mt-3" key={items.id}>
                 <div className="name flex flex-row space-x-2">
                   <h1 className="font-bold">{items.name.stringValue} </h1>
-                  <h1>{items.absen.stringValue}</h1>
+                  <div className="name flex flex-row justify-center items-center gap-3 bg-slate-500 rounded-full px-3">
+                    <BsFillCheckCircleFill
+                      className={
+                        items.absen.stringValue === "Hadir"
+                          ? "text-emerald-400"
+                          : "text-rose-500"
+                      }
+                    />
+                    <h1
+                      className={`${
+                        items.absen.stringValue === "Hadir"
+                          ? "text-slate-200"
+                          : "text-slate-200"
+                      }`}
+                    >
+                      {items.absen.stringValue}
+                    </h1>
+                  </div>
                 </div>
                 <h1>{items.message.stringValue}</h1>
               </div>
