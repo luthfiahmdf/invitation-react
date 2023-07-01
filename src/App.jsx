@@ -4,6 +4,7 @@ import m from "./assets/music/music.mp3";
 import { useState, useEffect } from "react";
 import Invite from "./pages/invite";
 import Groom from "./pages/groom";
+import InputGuest from "./components/inputGuest";
 
 function App() {
   const { name } = useParams();
@@ -11,14 +12,14 @@ function App() {
   const [inv, setInv] = useState(false);
   const [show, setShow] = useState(false);
 
-  useEffect(() => {
-    const audioElement = document.getElementById("music");
-    if (inv) {
-      audioElement.play();
-    } else {
-      audioElement.pause();
-    }
-  }, [inv]);
+  // useEffect(() => {
+  //   const audioElement = document.getElementById("music");
+  //   if (inv) {
+  //     audioElement.play();
+  //   } else {
+  //     audioElement.pause();
+  //   }
+  // }, [inv]);
 
   const handleInv = () => {
     setInv(true);
@@ -75,11 +76,12 @@ function App() {
         </div>
       )}
 
-      <audio id="music" src={m} />
+      {/* <audio id="music" src={m} /> */}
       <div className={`${show ? "display-block" : "hidden"}`}>
         <Invite />
         <Groom />
         <Groom />
+        <InputGuest />
       </div>
     </div>
   );

@@ -11,6 +11,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Routes>
         <Route>
           <Route path="/:name/:loc" element={<App />} />
+          <Route path="*" element={<h1>404 PAGE NOTFOUND</h1>} />
         </Route>
       </Routes>
     </BrowserRouter>
